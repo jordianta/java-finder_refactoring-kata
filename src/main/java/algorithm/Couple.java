@@ -1,32 +1,32 @@
 package algorithm;
 public class Couple
 {
-	private Person person1;
-	private Person person2;
+	private Person oldest;
+	private Person youngest;
 	private long distance;
 
 
-	public Person getPerson1()
+	public Person getOldest()
 	{
-		return person1;
+		return oldest;
 	}
 
 
-	public void setPerson1(final Person person1)
+	public void setOldest(final Person oldest)
 	{
-		this.person1 = person1;
+		this.oldest = oldest;
 	}
 
 
-	public Person getPerson2()
+	public Person getYoungest()
 	{
-		return person2;
+		return youngest;
 	}
 
 
-	public void setPerson2(final Person person2)
+	public void setYoungest(final Person youngest)
 	{
-		this.person2 = person2;
+		this.youngest = youngest;
 	}
 
 

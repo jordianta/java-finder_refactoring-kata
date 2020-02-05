@@ -25,15 +25,15 @@ public class Finder
                 final Couple couple = new Couple();
                 if (people.get(i).isOlder(people.get(j)))
                 {
-                    couple.setPerson1(people.get(i));
-                    couple.setPerson2(people.get(j));
+                    couple.setOldest(people.get(i));
+                    couple.setYoungest(people.get(j));
                 }
                 else
                 {
-                    couple.setPerson1(people.get(j));
-                    couple.setPerson2(people.get(i));
+                    couple.setOldest(people.get(j));
+                    couple.setYoungest(people.get(i));
                 }
-                couple.setDistance(couple.getPerson2().getBirthDateTime() - couple.getPerson1().getBirthDateTime());
+                couple.setDistance(couple.getYoungest().getBirthDateTime() - couple.getOldest().getBirthDateTime());
                 tr.add(couple);
             }
         }

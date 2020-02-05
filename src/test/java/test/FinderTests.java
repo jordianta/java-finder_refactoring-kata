@@ -29,9 +29,9 @@ public class FinderTests
         final Finder finder = new Finder(people);
 
         final Couple result = finder.find(Criteria.One);
-        assertNull(result.getPerson1());
+        assertNull(result.getOldest());
 
-        assertNull(result.getPerson2());
+        assertNull(result.getYoungest());
     }
 
 
@@ -45,8 +45,8 @@ public class FinderTests
 
         final Couple result = finder.find(Criteria.One);
 
-        assertNull(result.getPerson1());
-        assertNull(result.getPerson2());
+        assertNull(result.getOldest());
+        assertNull(result.getYoungest());
     }
 
 
@@ -60,8 +60,8 @@ public class FinderTests
 
         final Couple result = finder.find(Criteria.One);
 
-        assertEquals(sue, result.getPerson1());
-        assertEquals(greg, result.getPerson2());
+        assertEquals(sue, result.getOldest());
+        assertEquals(greg, result.getYoungest());
     }
 
 
@@ -76,8 +76,8 @@ public class FinderTests
 
         final Couple result = finder.find(Criteria.Two);
 
-        assertEquals(greg, result.getPerson1());
-        assertEquals(mike, result.getPerson2());
+        assertEquals(greg, result.getOldest());
+        assertEquals(mike, result.getYoungest());
     }
 
 
@@ -93,8 +93,8 @@ public class FinderTests
 
         final Couple result = finder.find(Criteria.Two);
 
-        assertEquals(sue, result.getPerson1());
-        assertEquals(sarah, result.getPerson2());
+        assertEquals(sue, result.getOldest());
+        assertEquals(sarah, result.getYoungest());
     }
 
 
@@ -111,8 +111,8 @@ public class FinderTests
 
         final Couple result = finder.find(Criteria.One);
 
-        assertEquals(sue, result.getPerson1());
-        assertEquals(greg, result.getPerson2());
+        assertEquals(sue, result.getOldest());
+        assertEquals(greg, result.getYoungest());
     }
 
 }
