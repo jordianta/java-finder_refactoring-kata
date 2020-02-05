@@ -51,21 +51,9 @@ public class Finder
         Couple selected = couples.get(0);
         for (final Couple candidate : couples)
         {
-            switch (criteria)
+            if (criteria.match(candidate, selected))
             {
-                case CLOSEST:
-                    if (candidate.isCloser(selected))
-                    {
-                        selected = candidate;
-                    }
-                    break;
-
-                case FARTHEST:
-                    if (candidate.isFarther(selected))
-                    {
-                        selected = candidate;
-                    }
-                    break;
+                selected = candidate;
             }
         }
         return selected;
