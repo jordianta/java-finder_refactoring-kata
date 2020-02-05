@@ -29,7 +29,7 @@ public class Person
 
     public boolean isOlder(final Person person)
     {
-        return getBirthDateTime() < person.getBirthDateTime();
+        return this.getBirthDateTime() < person.getBirthDateTime();
     }
 }
 

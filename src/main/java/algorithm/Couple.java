@@ -40,4 +40,16 @@ public class Couple
         }
         return youngest.getBirthDateTime() - oldest.getBirthDateTime();
     }
+
+
+    public boolean isCloser(final Couple couple)
+    {
+        return this.getDistance() < couple.getDistance();
+    }
+
+
+    public boolean isFarther(final Couple couple)
+    {
+        return this.getDistance() > couple.getDistance();
+    }
 }

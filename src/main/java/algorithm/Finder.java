@@ -16,6 +16,19 @@ public class Finder
 
     public Couple find(final Criteria criteria)
     {
+        final List<Couple> couples = generateCouples();
+
+        if (couples.isEmpty())
+        {
+            return new Couple();
+        }
+
+        return chooseCoupleByCriteria(couples, criteria);
+    }
+
+
+    private List<Couple> generateCouples()
+    {
         final List<Couple> couples = new ArrayList<Couple>();
 
         for (int i = 0; i < people.size() - 1; i++)
@@ -34,33 +47,32 @@ public class Finder
                 couples.add(couple);
             }
         }
+        return couples;
+    }
 
-        if (couples.isEmpty())
-        {
-            return new Couple();
-        }
 
+    private Couple chooseCoupleByCriteria(final List<Couple> couples, final Criteria criteria)
+    {
         Couple selected = couples.get(0);
         for (final Couple candidate : couples)
         {
             switch (criteria)
             {
                 case CLOSEST:
-                    if (candidate.getDistance() < selected.getDistance())
+                    if (candidate.isCloser(selected))
                     {
                         selected = candidate;
                     }
                     break;
 
                 case FARTHEST:
-                    if (candidate.getDistance() > selected.getDistance())
+                    if (candidate.isFarther(selected))
                     {
                         selected = candidate;
                     }
                     break;
             }
         }
-
         return selected;
     }
 }
