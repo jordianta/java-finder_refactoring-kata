@@ -1,14 +1,14 @@
 package algorithm;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Person
 {
     private final String name;
-    private final Date birthDate;
+    private final LocalDate birthDate;
 
 
-    public Person(final String name, final Date birthDate)
+    public Person(final String name, final LocalDate birthDate)
     {
         this.name = name;
         this.birthDate = birthDate;
@@ -23,7 +23,7 @@ public class Person
 
     public long getBirthDateTime()
     {
-        return birthDate.getTime();
+        return birthDate.toEpochDay();
     }
 
 

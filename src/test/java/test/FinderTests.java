@@ -4,9 +4,9 @@ import algorithm.Couple;
 import algorithm.Criteria;
 import algorithm.Finder;
 import algorithm.Person;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
@@ -18,10 +18,10 @@ import static org.junit.Assert.assertTrue;
 public class FinderTests
 {
 
-    final Person sue = new Person("Sue", new Date(50, Calendar.JANUARY, 1));
-    final Person greg = new Person("Greg", new Date(52, Calendar.JUNE, 1));
-    final Person sarah = new Person("Sarah", new Date(82, Calendar.JANUARY, 1));
-    final Person mike = new Person("Mike", new Date(79, Calendar.JANUARY, 1));
+    final Person sue = new Person("Sue", LocalDate.of(50, Month.JANUARY, 1));
+    final Person greg = new Person("Greg", LocalDate.of(52, Month.JUNE, 1));
+    final Person sarah = new Person("Sarah", LocalDate.of(82, Month.JANUARY, 1));
+    final Person mike = new Person("Mike", LocalDate.of(79, Month.JANUARY, 1));
 
 
     @Test
