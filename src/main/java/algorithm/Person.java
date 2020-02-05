@@ -21,9 +21,9 @@ public class Person
     }
 
 
-    public Date getBirthDate()
+    public long getBirthDateTime()
     {
-        return birthDate;
+        return birthDate.getTime();
     }
 }
 
