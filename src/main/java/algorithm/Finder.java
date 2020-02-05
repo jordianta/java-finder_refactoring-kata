@@ -1,8 +1,10 @@
 package algorithm;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class Finder
 {
@@ -30,25 +32,27 @@ public class Finder
 
     private List<Couple> generateCouples()
     {
-        final List<Couple> couples = new ArrayList<>();
+        return people.stream()
+            .flatMap(person -> combineWithOtherPeople(person, people))
+            .collect(toList());
+    }
 
-        for (int i = 0; i < people.size() - 1; i++)
+
+    private Stream<Couple> combineWithOtherPeople(final Person person, final List<Person> people)
+    {
+        return people.stream()
+            .filter(otherPerson -> !otherPerson.equals(person))
+            .map(otherPerson -> createCouple(person, otherPerson));
+    }
+
+
+    private Couple createCouple(final Person person, final Person otherPerson)
+    {
+        if (person.isOlder(otherPerson))
         {
-            for (int j = i + 1; j < people.size(); j++)
-            {
-                final Couple couple;
-                if (people.get(i).isOlder(people.get(j)))
-                {
-                    couple = new Couple(people.get(i), people.get(j));
-                }
-                else
-                {
-                    couple = new Couple(people.get(j), people.get(i));
-                }
-                couples.add(couple);
-            }
+            return new Couple(person, otherPerson);
         }
-        return couples;
+        return new Couple(otherPerson, person);
     }
 
 
