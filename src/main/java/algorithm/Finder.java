@@ -42,17 +42,7 @@ public class Finder
     {
         return people.stream()
             .filter(otherPerson -> !otherPerson.equals(person))
-            .map(otherPerson -> createCouple(person, otherPerson));
-    }
-
-
-    private Couple createCouple(final Person person, final Person otherPerson)
-    {
-        if (person.isOlder(otherPerson))
-        {
-            return new Couple(person, otherPerson);
-        }
-        return new Couple(otherPerson, person);
+            .map(otherPerson -> Couple.of(person, otherPerson));
     }
 
 
