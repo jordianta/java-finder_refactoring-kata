@@ -16,12 +16,6 @@ public class Person
     }
 
 
-    public String getName()
-    {
-        return name;
-    }
-
-
     public long getBirthDateTime()
     {
         return birthDate.toEpochDay();
