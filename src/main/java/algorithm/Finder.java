@@ -5,16 +5,16 @@ import java.util.List;
 public class Finder {
 	private final List<Person> people;
 
-	public Finder(List<Person> people) {
+	public Finder(final List<Person> people) {
 		this.people = people;
 	}
 
-	public Couple find(Criteria criteria) {
-		List<Couple> tr = new ArrayList<Couple>();
+	public Couple find(final Criteria criteria) {
+		final List<Couple> tr = new ArrayList<Couple>();
 
 		for (int i = 0; i < people.size() - 1; i++) {
 			for (int j = i + 1; j < people.size(); j++) {
-				Couple couple = new Couple();
+				final Couple couple = new Couple();
 				if (people.get(i).getBirthDate().getTime() < people.get(j).getBirthDate().getTime()) {
 					couple.person1 = people.get(i);
 					couple.person2 = people.get(j);
@@ -27,12 +27,12 @@ public class Finder {
 			}
 		}
 
-		if (tr.size() < 1) {
+		if (tr.isEmpty()) {
 			return new Couple();
 		}
 
 		Couple answer = tr.get(0);
-		for (Couple result : tr) {
+		for (final Couple result : tr) {
 			switch (criteria) {
 				case One :
 					if (result.distance < answer.distance) {
