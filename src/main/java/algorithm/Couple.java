@@ -13,13 +13,6 @@ public class Couple
     }
 
 
-    public Couple()
-    {
-        this.oldest = null;
-        this.youngest = null;
-    }
-
-
     public Person getOldest()
     {
         return oldest;
@@ -34,10 +27,6 @@ public class Couple
 
     public long getDistance()
     {
-        if (youngest == null || oldest == null)
-        {
-            return 0;
-        }
         return youngest.getBirthDateTime() - oldest.getBirthDateTime();
     }
 

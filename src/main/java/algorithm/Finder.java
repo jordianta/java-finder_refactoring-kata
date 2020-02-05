@@ -2,6 +2,7 @@ package algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Finder
 {
@@ -14,22 +15,22 @@ public class Finder
     }
 
 
-    public Couple find(final Criteria criteria)
+    public Optional<Couple> find(final Criteria criteria)
     {
         final List<Couple> couples = generateCouples();
 
         if (couples.isEmpty())
         {
-            return new Couple();
+            return Optional.empty();
         }
 
-        return chooseCoupleByCriteria(couples, criteria);
+        return Optional.of(chooseCoupleByCriteria(couples, criteria));
     }
 
 
     private List<Couple> generateCouples()
     {
-        final List<Couple> couples = new ArrayList<Couple>();
+        final List<Couple> couples = new ArrayList<>();
 
         for (int i = 0; i < people.size() - 1; i++)
         {

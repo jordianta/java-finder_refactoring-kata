@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class FinderTests
 {
@@ -25,83 +27,84 @@ public class FinderTests
     @Test
     public void Returns_Empty_Results_When_Given_Empty_List()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.CLOSEST);
-        assertNull(result.getOldest());
+        final Optional<Couple> result = finder.find(Criteria.CLOSEST);
 
-        assertNull(result.getYoungest());
+        assertFalse(result.isPresent());
     }
 
 
     @Test
     public void Returns_Empty_Results_When_Given_One_Person()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         people.add(sue);
 
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.CLOSEST);
+        final Optional<Couple> result = finder.find(Criteria.CLOSEST);
 
-        assertNull(result.getOldest());
-        assertNull(result.getYoungest());
+        assertFalse(result.isPresent());
     }
 
 
     @Test
     public void Returns_Closest_Two_For_Two_People()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         people.add(sue);
         people.add(greg);
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.CLOSEST);
+        final Optional<Couple> result = finder.find(Criteria.CLOSEST);
 
-        assertEquals(sue, result.getOldest());
-        assertEquals(greg, result.getYoungest());
+        assertTrue(result.isPresent());
+        assertEquals(sue, result.get().getOldest());
+        assertEquals(greg, result.get().getYoungest());
     }
 
 
     @Test
     public void Returns_Furthest_Two_For_Two_People()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         people.add(mike);
         people.add(greg);
 
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.FARTHEST);
+        final Optional<Couple> result = finder.find(Criteria.FARTHEST);
 
-        assertEquals(greg, result.getOldest());
-        assertEquals(mike, result.getYoungest());
+        assertTrue(result.isPresent());
+        assertEquals(greg, result.get().getOldest());
+        assertEquals(mike, result.get().getYoungest());
     }
 
 
     @Test
     public void Returns_Furthest_Two_For_Four_People()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         people.add(sue);
         people.add(sarah);
         people.add(mike);
         people.add(greg);
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.FARTHEST);
+        final Optional<Couple> result = finder.find(Criteria.FARTHEST);
 
-        assertEquals(sue, result.getOldest());
-        assertEquals(sarah, result.getYoungest());
+        assertTrue(result.isPresent());
+        assertEquals(sue, result.get().getOldest());
+        assertEquals(sarah, result.get().getYoungest());
     }
 
 
     @Test
     public void Returns_Closest_Two_For_Four_People()
     {
-        final List<Person> people = new ArrayList<Person>();
+        final List<Person> people = new ArrayList<>();
         people.add(sue);
         people.add(sarah);
         people.add(mike);
@@ -109,10 +112,11 @@ public class FinderTests
 
         final Finder finder = new Finder(people);
 
-        final Couple result = finder.find(Criteria.CLOSEST);
+        final Optional<Couple> result = finder.find(Criteria.CLOSEST);
 
-        assertEquals(sue, result.getOldest());
-        assertEquals(greg, result.getYoungest());
+        assertTrue(result.isPresent());
+        assertEquals(sue, result.get().getOldest());
+        assertEquals(greg, result.get().getYoungest());
     }
 
 }
