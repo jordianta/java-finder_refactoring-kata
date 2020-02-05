@@ -23,7 +23,7 @@ public class Finder
             for (int j = i + 1; j < people.size(); j++)
             {
                 final Couple couple = new Couple();
-                if (people.get(i).getBirthDateTime() < people.get(j).getBirthDateTime())
+                if (people.get(i).isOlder(people.get(j)))
                 {
                     couple.setPerson1(people.get(i));
                     couple.setPerson2(people.get(j));

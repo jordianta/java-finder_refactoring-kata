@@ -25,5 +25,11 @@ public class Person
     {
         return birthDate.getTime();
     }
+
+
+    public boolean isOlder(final Person person)
+    {
+        return getBirthDateTime() < person.getBirthDateTime();
+    }
 }
 
