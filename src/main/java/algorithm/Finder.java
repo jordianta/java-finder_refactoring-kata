@@ -16,7 +16,7 @@ public class Finder
 
     public Couple find(final Criteria criteria)
     {
-        final List<Couple> tr = new ArrayList<Couple>();
+        final List<Couple> couples = new ArrayList<Couple>();
 
         for (int i = 0; i < people.size() - 1; i++)
         {
@@ -31,36 +31,36 @@ public class Finder
                 {
                     couple = new Couple(people.get(j), people.get(i));
                 }
-                tr.add(couple);
+                couples.add(couple);
             }
         }
 
-        if (tr.isEmpty())
+        if (couples.isEmpty())
         {
             return new Couple();
         }
 
-        Couple answer = tr.get(0);
-        for (final Couple result : tr)
+        Couple selected = couples.get(0);
+        for (final Couple candidate : couples)
         {
             switch (criteria)
             {
-                case One:
-                    if (result.getDistance() < answer.getDistance())
+                case CLOSEST:
+                    if (candidate.getDistance() < selected.getDistance())
                     {
-                        answer = result;
+                        selected = candidate;
                     }
                     break;
 
-                case Two:
-                    if (result.getDistance() > answer.getDistance())
+                case FARTHEST:
+                    if (candidate.getDistance() > selected.getDistance())
                     {
-                        answer = result;
+                        selected = candidate;
                     }
                     break;
             }
         }
 
-        return answer;
+        return selected;
     }
 }
