@@ -1,43 +1,43 @@
 package algorithm;
+
 public class Couple
 {
-	private Person oldest;
-	private Person youngest;
-	private long distance;
+    private final Person oldest;
+    private final Person youngest;
 
 
-	public Person getOldest()
-	{
-		return oldest;
-	}
+    public Couple(final Person oldest, final Person youngest)
+    {
+        this.oldest = oldest;
+        this.youngest = youngest;
+    }
 
 
-	public void setOldest(final Person oldest)
-	{
-		this.oldest = oldest;
-	}
+    public Couple()
+    {
+        this.oldest = null;
+        this.youngest = null;
+    }
 
 
-	public Person getYoungest()
-	{
-		return youngest;
-	}
+    public Person getOldest()
+    {
+        return oldest;
+    }
 
 
-	public void setYoungest(final Person youngest)
-	{
-		this.youngest = youngest;
-	}
+    public Person getYoungest()
+    {
+        return youngest;
+    }
 
 
-	public long getDistance()
-	{
-		return distance;
-	}
-
-
-	public void setDistance(final long distance)
-	{
-		this.distance = distance;
-	}
+    public long getDistance()
+    {
+        if (youngest == null || oldest == null)
+        {
+            return 0;
+        }
+        return youngest.getBirthDateTime() - oldest.getBirthDateTime();
+    }
 }

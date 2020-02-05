@@ -22,18 +22,15 @@ public class Finder
         {
             for (int j = i + 1; j < people.size(); j++)
             {
-                final Couple couple = new Couple();
+                final Couple couple;
                 if (people.get(i).isOlder(people.get(j)))
                 {
-                    couple.setOldest(people.get(i));
-                    couple.setYoungest(people.get(j));
+                    couple = new Couple(people.get(i), people.get(j));
                 }
                 else
                 {
-                    couple.setOldest(people.get(j));
-                    couple.setYoungest(people.get(i));
+                    couple = new Couple(people.get(j), people.get(i));
                 }
-                couple.setDistance(couple.getYoungest().getBirthDateTime() - couple.getOldest().getBirthDateTime());
                 tr.add(couple);
             }
         }
